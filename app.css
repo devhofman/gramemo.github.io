@@ -1,0 +1,140 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  background: #060AB2;
+  overflow: hidden;
+}
+
+main, video {
+  width: 100vw; height: 100vh;
+}
+
+video {
+  transform: scale(2.5) translateY(10%);
+}
+
+.main-panel {
+  width: 100vw; height: 100vh;
+  z-index: 6;
+  background-color: rgb(0,0,0, .9);
+}
+
+.main-panel button {
+  background-color: rgb(0,0,0,0);
+  color: white;
+  font-family: 'Abril Fatface';
+  font-size: 2rem;
+  border: none;
+  transition: .5s;
+   position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 6;
+}
+
+.main-panel button:hover {
+  background-color: rgb(0,0,0,1);
+  padding: 5px;
+}
+
+.content {
+  position: absolute;
+  top: 0%;
+  width: 100vw; height: 100vh;
+  transition: .5;
+  animation: animate-background 10s;
+  animation-iteration-count: infinite;
+}
+
+.memory-game {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 640px;
+  height: 640px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  perspective: 1000px;
+}
+
+.memory-card {
+  width: calc(25% - 10px);
+  height: calc(33.333% - 10px);
+  margin: 5px;
+  position: relative;
+  transform: scale(1);
+  transform-style: preserve-3d;
+  transition: transform .5s;
+  box-shadow: 1px 1px 1px rgba(0,0,0,.3);
+}
+
+.memory-card:active {
+  transform: scale(0.97);
+  transition: transform .2s;
+}
+
+.memory-card.flip {
+  transform: rotateY(180deg);
+}
+
+.front-face,
+.back-face {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  position: absolute;
+  border-radius: 0;
+  backface-visibility: hidden;
+}
+
+.back-face {
+  background-image: url(./oko.jpg);
+  background-size: cover;
+  background-position: -100px 0;
+}
+
+.front-face {
+  transform: rotateY(180deg);
+  background-color: #B2009E;
+}
+
+.title {
+  background-color: black;
+  color: white;
+  font-family: 'Abril Fatface';
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  font-size: 2rem;
+}
+
+embed {
+  position: absolute;
+  top: 0%; left: 50%;
+}
+
+@keyframes animate-background {
+  0% {
+    background-color: rgb(117, 42, 232, .5);
+  }
+
+  25% {
+    background-color: rgb(49, 79, 232, .5);
+  }
+
+  75% {
+    background-color: rgb(255, 54, 207, .5);
+  }
+
+  100% {
+    background-color: rgb(117, 42, 232, .5);
+  }
+}
